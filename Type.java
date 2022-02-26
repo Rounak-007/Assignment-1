@@ -1,18 +1,16 @@
 import java.util.*;
 
-public enum Type{
+public class Type{
 
-    HATCHBACK(1.05),
-    SEDAN(1.08),
-    SUV(1.1);
+    private final Map<String,Double> carType = new HashMap<>();
 
-    private final double rateOfPremium;
-
-    Type(double rateOfPremium){
-        this.rateOfPremium=rateOfPremium;
+    public Type(){
+        carType.put("Hatchback",0.05);
+        carType.put("Sedan",0.08);
+        carType.put("SUV",0.1);
     }
 
-    public double calculatePremium(double costPrice){
-        return costPrice * rateOfPremium;
+    public double getDiscount(String type){
+        return carType.get(type);
     }
 }

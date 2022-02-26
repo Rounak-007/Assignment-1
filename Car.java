@@ -3,26 +3,21 @@ import java.util.*;
 public class Car{
 
     private final String model;
-    private final String type;
+    private final String carType;
     private final double costPrice;
-    private final String insuranceType;
-    private final Map<String, Double> Type = new HashMap<>();
-    private final Map<String, Double> InsuranceType = new HashMap<>();
-
-    public Car(String model, String type, double costPrice, String insuranceType){
+    private final String carInsuranceType;
+    
+    public Car(String model, String carType, double costPrice, String carInsuranceType){
         this.model=model;
-        this.type=type;
+        this.carType=carType;
         this.costPrice=costPrice;
-        this.insuranceType=insuranceType;
-        Type.put("Hatchback",0.05);
-        Type.put("Sedan",0.08);
-        Type.put("SUV",0.1);
-        InsuranceType.put("Premium",1.2);
-        InsuranceType.put("Basic",1.0);
+        this.carInsuranceType=carInsuranceType;
     }
 
 
     public double calculateTotalPremium(){
-        return ((costPrice * Type.get(type)) * InsuranceType.get(insuranceType));
+        Type type = new Type();
+        InsuranceType insuranceType=new InsuranceType();
+        return ((costPrice * type.getDiscount(carType)) * insuranceType.getInsuranceType(carInsuranceType));
     }
 }

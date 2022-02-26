@@ -1,15 +1,15 @@
-public enum InsuranceType{
+import java.util.*;
 
-    PREMIUM(1.2),
-    BASIC(1.0);
+public class InsuranceType{
 
-    private final double addedRateOfPremium;
+    private final Map<String,Double> insuranceType = new HashMap<>();
 
-    InsuranceType(double addedRateOfPremium){
-        this.addedRateOfPremium=addedRateOfPremium;
+    public InsuranceType(){
+        insuranceType.put("Baisc",1.0);
+        insuranceType.put("Premium",1.2);
     }
 
-    public double calculateAddedPremium(double originalPremiumValue){
-        return originalPremiumValue * addedRateOfPremium;
+    public double getInsuranceType(String insurance){
+        return insuranceType.get(insurance);
     }
 }
